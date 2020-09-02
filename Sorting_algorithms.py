@@ -22,6 +22,36 @@ def timeit(method):
         return (tabulate(measurement,headers=measurement.keys()))
     return timed
 
+
+#-------------------------------------------#
+#-----------------Insert sort---------------#
+@timeit
+def insert_sort(lst):
+    for i in range(1,len(lst)):
+        value = lst[i]
+        while lst[i-1] > value and i>0:
+            lst[i],lst[i-1] = lst[i-1],lst[i]
+            i -= 1
+    return lst
+
+print('Insert sort:')
+print(insert_sort(lst))
+print('\n\n')
+
+#--------------Selection sort---------------#
+@timeit
+def selection_sort(lst):
+    for i in range(len(lst)-1):
+        lowest_index = i
+        for j in range(i+1,len(lst)):
+            if lst[j] < lst[lowest_index]:
+                lowest_index = j
+        if lowest_index != i:
+            lst[i],lst[lowest_index] = lst[lowest_index],lst[i]
+    return lst
+print('Selection sort:')
+print(selection_sort(lst))
+print('\n\n')
 #--------------- Bubble sort ---------------#
 @timeit
 def bubble_sort(lst):
@@ -55,7 +85,7 @@ def quick_sort(lst):
         return quick_sort(lower) + equal + quick_sort(greater)
         
 
-
 print('Quick sort:')
 print(timeit(quick_sort)(lst))
 print('\n\n')
+
