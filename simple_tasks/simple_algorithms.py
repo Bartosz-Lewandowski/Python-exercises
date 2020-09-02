@@ -37,8 +37,9 @@ def fibonacci(n):
             new_digit = result[i-2] + result[i-3]
             result.append(new_digit)
     return result
-print('Fibonacci with list:\n)
-print(fibonacci(5)
+
+print('Fibonacci with list:\n')
+print(fibonacci(5))
 print('\n')
 
 #Fibonacci with recurency
