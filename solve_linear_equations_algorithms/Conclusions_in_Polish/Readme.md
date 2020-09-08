@@ -1,0 +1,5 @@
+# Porównanie obu metod w języku Polskim 
+## Podsumowanie porówaniania czasu wykonania równania
+Widać, że metoda eliminacji Gaussa była dużo szybsza od metodywyznacznikowej Cramera. Odczuwalna różnica była już przy macierzy orozmiarze 100 na 100. W przypadku wymiaru macierzy 1000x1000 toróżnica ta jest kolosalna. Metoda eliminacji Gaussa jest dużo bardziejwydajna przy większej liczbie równań niż metoda wyznacznikowa Cramera.
+## Podsumowanie porównania poprawności obu metod 
+Metoda eliminacji Gaussa wykazała się dużo większą poprawnością w porównaniu z metodą wyznacznikową Cramera. Tak jak i w przypadkupomiaru czasu tak i tutaj, jeżeli patrzymy na mały wymiar macierzy to różnice w obu metodach są praktycznie niezauważalne, chociaż metoda Gaussa nie wykazuje żadnego błędu, ale możemy przyjąć wykazany błąd w metodzie Cramera jako mało istotny. Przy wymiarze macierzy 100x100 tometoda eliminacji wypada o dużo lepiej. Przy wymiarze macierzy 500x500metoda wyznacznikowa ma błędy nie do przyjęcia, kiedy błąd przy metodzie Gaussa nie odstępuje od błędów popełnianych wcześniej.
