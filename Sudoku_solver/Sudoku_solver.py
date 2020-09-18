@@ -11,26 +11,32 @@ board = [
 ]
 
 
+# Print sudoku board 
+def print_board(bo):
+    for i in range(len(bo)):
+        if i % 3 == 0 and i != 0:
+            print("- - - - - - - - - - - - - ")
 
-def solve(bo):
-    find = find_empty(bo)
-    if not find:
-        return True
-    else:
-        row, col = find
+        for j in range(len(bo[0])):
+            if j % 3 == 0 and j != 0:
+                print(" | ", end="")
 
-    for i in range(1,10):
-        if valid(bo, i, (row, col)):
-            bo[row][col] = i
-
-            if solve(bo):
-                return True
-
-            bo[row][col] = 0
-
-    return False
+            if j == 8:
+                print(bo[i][j])
+            else:
+                print(str(bo[i][j]) + " ", end="")
 
 
+#finding empty box
+def find_empty(bo):
+    for i in range(len(bo)):
+        for j in range(len(bo[0])):
+            if bo[i][j] == 0:
+                return (i, j)  # row, col
+
+    return None
+
+# Check if number I try to insert is valid 
 def valid(bo, num, pos):
     # Check row
     for i in range(len(bo[0])):
@@ -53,28 +59,32 @@ def valid(bo, num, pos):
 
     return True
 
+# Recursion function solving sudoku with backtracking algorithm 
+def solve(bo):
+    find = find_empty(bo)
+    # when there is not any empty box that's mean recursion function can end becouse every box is completed 
+    if not find:
+        return True
+    # if there is an empty box take it's coordinates
+    else:
+        row, col = find
+    # this loop tries to check every number from 1 to 9 and checks if it's valid. If entered number will come out invalid it will backtrack changes and try other option
+    for i in range(1,10):
+        if valid(bo, i, (row, col)):
+            bo[row][col] = i
 
-def print_board(bo):
-    for i in range(len(bo)):
-        if i % 3 == 0 and i != 0:
-            print("- - - - - - - - - - - - - ")
+            if solve(bo):
+                return True
 
-        for j in range(len(bo[0])):
-            if j % 3 == 0 and j != 0:
-                print(" | ", end="")
+            bo[row][col] = 0
 
-            if j == 8:
-                print(bo[i][j])
-            else:
-                print(str(bo[i][j]) + " ", end="")
+    return False
 
 
-def find_empty(bo):
-    for i in range(len(bo)):
-        for j in range(len(bo[0])):
-            if bo[i][j] == 0:
-                return (i, j)  # row, col
-
-    return None
+print_board(board)
+solve(board)
+print('\n')
+print('Solved!')
+print_board(board)
 
 
